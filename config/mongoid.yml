@@ -1,0 +1,21 @@
+development:
+  clients:
+    default:
+      database: retrosprint_development
+      hosts:
+        - localhost:27018
+      options:
+        user: root
+        password: qwerty
+        auth_source: admin
+
+test:
+  clients:
+    default:
+      database: retrosprint_test
+      hosts:
+        - localhost:27018
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1
