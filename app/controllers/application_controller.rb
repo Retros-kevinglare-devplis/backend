@@ -4,13 +4,18 @@ class ApplicationController < ActionController::API
   #
   def render_json(result, params: {})
     caller_method ||= caller_locations(1, 1)[0].label
+    log_message = "Response #{user_id} ##{caller_method}"
 
     if result.success?
       response = result.data
-    else
-      Rails.logger.info(
-        "Response #{user_id} ##{caller_method} - data: #{result.data}, message: #{result.message}, params: #{params}"
+      Rails.logger.error(
+        "#{log_message} success - data: #{result.data}, message: #{result.message}, params: #{params}"
       )
+    else
+      Rails.logger.error(
+        "#{log_message} failure - error: #{result.error}, message: #{result.message}, params: #{params}"
+      )
+
       response = { error: result.error }
       response[:message] = result.message if Rails.env.development?
     end
