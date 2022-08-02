@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Api
   module V1
     module Users
@@ -12,7 +10,7 @@ module Api
                  Actions::GenerateJwtInteractor,
                  Actions::ExpiredAuthTokensInteractor,
                  Actions::SaveAuthTokenInteractor,
-                 Actions::ResponseCreateInteractor
+                 Actions::ResponseAuthTokenInteractor
       end
     end
   end

@@ -1,4 +1,4 @@
-class Api::V1::Users::Actions::ResponseCreateInteractor < ApplicationInteractor
+class Api::V1::Users::Actions::ResponseAuthTokenInteractor < ApplicationInteractor
   include Interactor::Organizer
 
   def call
@@ -14,7 +14,7 @@ class Api::V1::Users::Actions::ResponseCreateInteractor < ApplicationInteractor
       }
     }
 
-    context.data = Api::V1::Users::AuthTokenSerializer.new(auth_token, options).serializable_hash
+    context.data = Api::V1::AuthTokenSerializer.new(auth_token, options).serializable_hash
 
     context.status = :ok
   end

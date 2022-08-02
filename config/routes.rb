@@ -7,6 +7,12 @@ Rails.application.routes.draw do
         post '/refresh', to: 'users#refresh'
         get '/whoami', to: 'users#whoami'
       end
+
+      resources :teams, only: %i[index create update destroy show] do
+        resources :retros, only: %i[index create update destroy]
+        resources :invites, only: %i[index create update destroy]
+        resources :collaborators, only: %i[index create update destroy]
+      end
     end
   end
 end

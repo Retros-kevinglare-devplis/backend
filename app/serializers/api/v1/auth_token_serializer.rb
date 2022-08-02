@@ -1,4 +1,4 @@
-class Api::V1::Users::AuthTokenSerializer < ApplicationSerializer
+class Api::V1::AuthTokenSerializer < ApplicationSerializer
   attributes :refresh_token
 
   attribute :refresh_token_expired_at do |object|

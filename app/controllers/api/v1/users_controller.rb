@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def whoami
-    render json: Api::V1::Users::UserSerializer.new(user).serializable_hash
+    render json: Api::V1::UserSerializer.new(user).serializable_hash
   end
 
   private
