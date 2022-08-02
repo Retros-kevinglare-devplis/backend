@@ -3,6 +3,8 @@ class Invite
   include Mongoid::Timestamps
   include Mongoid::Paranoia
 
+  extend Enumerize
+
   field :sender_id, type: BSON::ObjectId
   field :recipient_id, type: BSON::ObjectId
   field :team_id, type: BSON::ObjectId
@@ -10,7 +12,7 @@ class Invite
   field :email, type: Time
   field :expired_at, type: Time
   field :token, type: String
-  field :status, type: Integer, default: 0
+  field :status, type: Integer
 
   index({ sender_id: 1 })
   index({ recipient_id: 1 })
@@ -25,4 +27,10 @@ class Invite
   belongs_to :recipient, class_name: 'User', optional: true
   belongs_to :collaborator
   belongs_to :team
+
+  STATUS_WAITING = 0
+  STATUS_APPROVED = 1
+  STATUS_REJECTED = 2
+  STATUSES = { waiting: STATUS_WAITING, approved: STATUS_APPROVED, rejected: STATUS_REJECTED }.freeze
+  enumerize :status, in: STATUSES, default: STATUS_WAITING
 end

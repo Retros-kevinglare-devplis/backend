@@ -9,12 +9,13 @@ class Api::V1::TeamsController < ApplicationController
   end
 
   def create
-    result = Api::V1::Teams::CreateInteractor.call(params: create_params.to_h, user: user)
+    result = Api::V1::Teams::CreateInteractor.call(params: team_params.to_h, user: user)
     render_json result
   end
 
   def update
-
+    result = Api::V1::Teams::UpdateInteractor.call(params: team_params.to_h, user: user)
+    render_json result
   end
 
   def destroy
@@ -23,7 +24,7 @@ class Api::V1::TeamsController < ApplicationController
 
   private
 
-  def create_params
+  def team_params
     params.permit(:title)
   end
 end
