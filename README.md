@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```ruby
+q = User.create(email: 'admin@mail.ru', username: 'admin', first_name: 'retro', last_name: 'sprint', encrypted_password: Digest::SHA256.hexdigest('123123'))
+w = AuthToken.create(user: q, expired_at: Time.current + 1.week, refresh_token: SecureRandom.uuid)
+```

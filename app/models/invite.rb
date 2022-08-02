@@ -23,7 +23,7 @@ class Invite
   validates :email, :expired_at, :token, presence: true
 
   belongs_to :sender, class_name: 'User'
-  belongs_to :recipient_id, class_name: 'User', optional: true
-  belongs_to :collaborator, optional: true
+  belongs_to :recipient, class_name: 'User', optional: true
+  belongs_to :collaborator
   belongs_to :team
 end
