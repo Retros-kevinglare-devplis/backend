@@ -1,12 +1,11 @@
 module Api
   module V1
     module Teams
-      class UpdateInteractor < ApplicationInteractor
+      class DestroyInteractor < ApplicationInteractor
         include Interactor::Organizer
 
         organize Validations::FindTeamUpdateInteractor,
-                 Actions::UpdateTeamInteractor,
-                 Actions::ResponseTeamInteractor
+                 Actions::DestroyTeamInteractor
       end
     end
   end

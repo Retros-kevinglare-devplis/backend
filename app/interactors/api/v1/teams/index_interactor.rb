@@ -1,10 +1,10 @@
 module Api
   module V1
     module Teams
-      class ShowInteractor < ApplicationInteractor
+      class IndexInteractor < ApplicationInteractor
         include Interactor::Organizer
 
-        organize Validations::FindTeamReadInteractor,
+        organize Validations::FindTeamsReadInteractor,
                  Actions::ResponseTeamInteractor
       end
     end

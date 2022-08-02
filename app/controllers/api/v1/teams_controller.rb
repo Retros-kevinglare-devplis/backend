@@ -1,10 +1,11 @@
 class Api::V1::TeamsController < ApplicationController
   def index
-
+    result = Api::V1::Teams::IndexInteractor.call(user: user, per_page: per_page, current_page: current_page)
+    render_json result
   end
 
   def show
-    result = Api::V1::Teams::ShowInteractor.call(params: { id: params[:id] }, user: user)
+    result = Api::V1::Teams::ShowInteractor.call(team_id: params[:id], user: user)
     render_json result
   end
 
@@ -14,17 +15,26 @@ class Api::V1::TeamsController < ApplicationController
   end
 
   def update
-    result = Api::V1::Teams::UpdateInteractor.call(params: team_params.to_h, user: user)
+    result = Api::V1::Teams::UpdateInteractor.call(params: team_params.to_h, user: user, team_id: params[:id])
     render_json result
   end
 
   def destroy
-
+    result = Api::V1::Teams::DestroyInteractor.call(team_id: params[:id], user: user)
+    render_json result
   end
 
   private
 
   def team_params
     params.permit(:title)
+  end
+
+  def current_page
+    (params[:page] || 1).to_i
+  end
+
+  def per_page
+    (params[:per_page] || 20).to_i
   end
 end

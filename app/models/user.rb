@@ -19,4 +19,8 @@ class User
   has_many :recipient_invites, class_name: 'Invite', inverse_of: :evil_wizard, dependent: :destroy
   has_many :teams, dependent: :destroy
   has_many :collaborators, dependent: :destroy
+
+  def teams_collaborators
+    Team.where(id: { '$in': collaborators.pluck(:team_id) })
+  end
 end

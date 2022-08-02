@@ -6,6 +6,7 @@ module Api
 
         organize Validations::TeamContractInteractor,
                  Actions::CreateTeamInteractor,
+                 Actions::CreateCollaboratorInteractor,
                  Actions::ResponseTeamInteractor
       end
     end

@@ -7,8 +7,11 @@ gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 gem 'puma', '~> 5.0'
 gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 gem 'bootsnap', require: false
+
 gem 'mongoid', '~> 8.0.2'
 gem 'mongoid_paranoia', path: 'vendor/mongoid_paranoia'
+gem 'kaminari-mongoid'
+
 gem 'enumerize'
 
 gem 'jsonapi-serializer'
