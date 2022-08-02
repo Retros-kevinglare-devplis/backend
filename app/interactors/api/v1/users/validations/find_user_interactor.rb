@@ -8,7 +8,7 @@ class Api::V1::Users::Validations::FindUserInteractor < ApplicationInteractor
     if user.present?
       context.user = user
     else
-      error = { user: 'not found'}
+      error = { user: 'User not found'}
       context.message = "#{self.class.name} error: #{error}"
       context.error = error
       context.status = :unprocessable_entity

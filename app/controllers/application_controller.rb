@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::API
-  # before_action :authenticate_user!
-  # helper_method :current_user, :authenticate_user!
-  #
+  include ActionController::Helpers
+
+  before_action :authenticate_user!
+  helper_method :user, :authenticate_user!
+
   def render_json(result, params: {})
     caller_method ||= caller_locations(1, 1)[0].label
     log_message = "Response #{user_id} ##{caller_method}"
@@ -22,18 +24,26 @@ class ApplicationController < ActionController::API
 
     render json: response, status: result.status
   end
-  #
-  # private
-  #
-  # def current_user
-  #   @user = AuthService.get_client(token: request.headers['Authorization'])
-  # end
-  #
-  # def user_logged_in?
-  #
-  # end
-  #
-  #
+
+  private
+
+  def authenticate_user!
+    render_json OpenStruct.new(
+      error: { user: 'Application registration data not valid' },
+      status: :unauthorized,
+      message: "Token #{request.headers['Authorization']} invalid"
+    ) unless user_logged_in?
+  end
+
+  def user
+    puts request.headers['Authorization']
+    @user ||= AuthService.get_user(token: request.headers['Authorization'])
+  end
+
+  def user_logged_in?
+    !user.nil?
+  end
+
   def user_id
     defined?(@user).nil? ? nil : @user&.id
   end

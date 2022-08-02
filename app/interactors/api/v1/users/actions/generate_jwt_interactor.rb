@@ -8,11 +8,11 @@ class Api::V1::Users::Actions::GenerateJwtInteractor < ApplicationInteractor
 
 
     payload = {
-      user_id: user.id,
+      user_id: user.id.to_s,
       username: user.username,
       first_name: user.first_name,
       last_name: user.last_name,
-      auth_token_id: auth_token.id,
+      auth_token_id: auth_token.id.to_s,
       exp: access_token_expired_at.to_i
     }
 
