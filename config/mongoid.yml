@@ -3,18 +3,14 @@ development:
     default:
       database: retrosprint_development
       hosts:
-        - localhost:27018
-      options:
-        user: root
-        password: qwerty
-        auth_source: admin
+        - <%= ENV['MONGO_ADDR'] %>
 
 test:
   clients:
     default:
       database: retrosprint_test
       hosts:
-        - localhost:27018
+        - <%= ENV['MONGO_ADDR'] %>
       options:
         read:
           mode: :primary

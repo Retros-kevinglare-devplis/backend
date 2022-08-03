@@ -1,0 +1,42 @@
+version: '3.4'
+services:
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - "6380:6379"
+
+  mongodb:
+    image: mongo
+    restart: always
+    volumes:
+      - /data/db
+    ports:
+      - "27018:27017"
+
+  backend:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .docker_env
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    links:
+      - mongodb
+      - redis
+
+  sidekiq:
+    links:
+      - mongodb
+      - redis
+    build: .
+    env_file:
+      - .docker_env
+    command: bundle exec sidekiq
+    volumes:
+      - .:/app
+      - .:/app/tmp

@@ -28,10 +28,13 @@
 .idea
 .env
 
-
 /public/packs-test
 /node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
 .generators
+
+/cache
+!/cache/.keep
+development_secret.txt
