@@ -1,6 +1,8 @@
 class Api::V1::RetrosController < ApplicationController
+  include Pagination
+
   def index
-    result = Api::V1::Retros::IndexInteractor.call(user: user, per_page: per_page, current_page: current_page)
+    result = Api::V1::Retros::IndexInteractor.call(params: retro_params_with_id, user: user, per_page: per_page, current_page: current_page)
     render_json result
   end
 
