@@ -2,9 +2,6 @@ class Api::V1::TeamsController < ApplicationController
   include Pagination
 
   def index
-    puts per_page
-    puts current_page
-
     result = Api::V1::Teams::IndexInteractor.call(user: user, per_page: per_page, current_page: current_page)
     render_json result
   end

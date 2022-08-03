@@ -8,4 +8,5 @@ class Retro
   index({ team_id: 1 })
 
   belongs_to :team
+  embeds_many :components
 end

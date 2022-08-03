@@ -1,9 +1,10 @@
-class Api::V1::Teams::Validations::FindTeamUpdateInteractor < ApplicationInteractor
+class Api::V1::Retros::Validations::CheckUpdateRetroInteractor < ApplicationInteractor
   include Interactor::Organizer
 
   def call
     user = context.user
-    team_id = context.team_id
+    params = context.params
+    team_id = params[:team_id]
 
     collaborator = user.collaborators.find_by(
       team_id: team_id, status: { '$in':[Collaborator::STATUS_OWNER, Collaborator::STATUS_ADMIN] }
@@ -12,10 +13,10 @@ class Api::V1::Teams::Validations::FindTeamUpdateInteractor < ApplicationInterac
     if collaborator.present?
       context.team = collaborator.team
     else
-      error = { team: ["Team not found id #{team_id}"] }
-      context.message = "#{self.class.name} error: #{error.to_h}"
+      error = { retro: ["Not enough rights by team #{team_id}"] }
+      context.message = "#{self.class.name} error: #{error}"
       context.error = error
-      context.status = :not_found
+      context.status = :unprocessable_entity
       context.fail!
     end
   end

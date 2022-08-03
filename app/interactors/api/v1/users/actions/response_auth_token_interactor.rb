@@ -7,7 +7,7 @@ class Api::V1::Users::Actions::ResponseAuthTokenInteractor < ApplicationInteract
     access_token_expired_at = context.access_token_expired_at
 
     options = {
-      include: [:user, :'user.username'],
+      include: [:user],
       params: {
         access_token: access_token,
         access_token_expired_at: access_token_expired_at

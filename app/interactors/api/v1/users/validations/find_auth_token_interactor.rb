@@ -8,7 +8,7 @@ class Api::V1::Users::Validations::FindAuthTokenInteractor < ApplicationInteract
     if auth_token.present?
       context.auth_token = auth_token
     else
-      error = { auth_token: 'AuthToken not found' }
+      error = { auth_token: ['AuthToken not found'] }
       context.message = "#{self.class.name} error: #{error}"
       context.error = error
       context.status = :unprocessable_entity
