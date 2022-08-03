@@ -36,7 +36,6 @@ class ApplicationController < ActionController::API
   end
 
   def user
-    puts request.headers['Authorization']
     @user ||= AuthService.get_user(token: request.headers['Authorization'])
   end
 

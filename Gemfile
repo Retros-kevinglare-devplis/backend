@@ -8,6 +8,8 @@ gem 'puma', '~> 5.0'
 gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 gem 'bootsnap', require: false
 gem 'rack-cors'
+gem 'sidekiq', '>= 6.5.1'
+gem 'redis'
 
 gem 'mongoid', '~> 8.0.2'
 gem 'mongoid_paranoia', path: 'vendor/mongoid_paranoia'

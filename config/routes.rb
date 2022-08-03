@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       scope :users do

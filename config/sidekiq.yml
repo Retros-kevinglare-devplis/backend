@@ -1,0 +1,9 @@
+:concurrency: 10
+
+:queues:
+  - default
+  - components
+  - retros
+
+production:
+  :concurrency: 20
