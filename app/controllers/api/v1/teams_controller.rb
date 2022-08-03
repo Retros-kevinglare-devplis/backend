@@ -1,5 +1,10 @@
 class Api::V1::TeamsController < ApplicationController
+  include Pagination
+
   def index
+    puts per_page
+    puts current_page
+
     result = Api::V1::Teams::IndexInteractor.call(user: user, per_page: per_page, current_page: current_page)
     render_json result
   end
@@ -28,13 +33,5 @@ class Api::V1::TeamsController < ApplicationController
 
   def team_params
     params.permit(:title)
-  end
-
-  def current_page
-    (params[:page] || 1).to_i
-  end
-
-  def per_page
-    (params[:per_page] || 20).to_i
   end
 end
