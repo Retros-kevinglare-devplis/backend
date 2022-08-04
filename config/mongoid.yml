@@ -4,7 +4,10 @@ development:
       database: retrosprint_development
       hosts:
         - <%= ENV['MONGO_ADDR'] %>
-
+      options:
+        user: root
+        password: qwerty
+        auth_source: admin
 test:
   clients:
     default:

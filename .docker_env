@@ -1,8 +1,15 @@
 RAILS_ENV=development
 
+HOST=localhost:3000
+PROTOCOL='http'
+
 JWT_SECRET=secret
 
 MONGO_ADDR=mongodb:27017
 MONGO_INITDB_DATABASE=retrosprint_development
 
 REDIS_URL=redis://redis:6379/1
+
+EMAIL_FROM=retrosprintapp@gmail.com
+EMAIL_USERNAME=retrosprintapp
+EMAIL_PASSWORD=otwofthxzcdxscmv
