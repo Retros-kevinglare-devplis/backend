@@ -26,6 +26,8 @@ class Api::V1::RetrosController < ApplicationController
     render_json result
   end
 
+  private
+
   def retro_params_with_id
     retro_params.to_h.merge(id: params[:id])
   end

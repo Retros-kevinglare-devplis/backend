@@ -26,6 +26,8 @@ class User
     Team.where(id: { '$in': collaborators.pluck(:team_id) })
   end
 
+  private
+
   def send_sign_up_email
     UserMailer.with(email: email).sign_up.deliver_later
   end
