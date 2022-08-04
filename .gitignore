@@ -27,6 +27,8 @@
 
 .idea
 .env
+.docker_env
+.data
 
 /public/packs-test
 /node_modules

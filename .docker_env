@@ -1,12 +1,10 @@
 RAILS_ENV=development
-
 HOST=localhost:3000
-PROTOCOL='http'
+PROTOCOL=http
 
 JWT_SECRET=secret
 
-MONGO_ADDR=mongodb:27017
-MONGO_INITDB_DATABASE=retrosprint_development
+MONGO_URI=mongodb://mongodb:27017/retrosprint_development&ssl=false
 
 REDIS_URL=redis://redis:6379/1
 
