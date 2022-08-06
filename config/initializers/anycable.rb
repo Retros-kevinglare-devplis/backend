@@ -1,1 +1,0 @@
-AnyCable::Rails.extend_adapter!(ActionCable.server.pubsub)
