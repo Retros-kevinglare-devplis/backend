@@ -1,12 +1,14 @@
 class ApplicationController < ActionController::API
   include ActionController::Helpers
 
+  SHOW_EXCEPTION = ActiveModel::Type::Boolean.new.cast(ENV['SHOW_EXCEPTION']).freeze
+
   before_action :authenticate_user!
   helper_method :user, :authenticate_user!
 
   rescue_from StandardError do |e|
     data = { error: { server: ['Houston we have a problem'] }}
-    data[:exception] = e.message
+    data[:exception] = e.message if SHOW_EXCEPTION
     render json: data, status: :internal_server_error
   end
 
@@ -25,7 +27,7 @@ class ApplicationController < ActionController::API
       )
 
       response = { error: result.error }
-      response[:exception] = result.message if Rails.env.development?
+      response[:exception] = result.message if SHOW_EXCEPTION
     end
 
     render json: response, status: result.status
