@@ -38,3 +38,20 @@ services:
     volumes:
       - .:/app
       - .:/app/tmp
+
+  ws:
+    image: anycable/anycable-go:1.2
+    ports:
+      - '8080:8080'
+    env_file:
+      - .docker_env
+
+  anycable:
+    build: .
+    command: bundle exec anycable
+    env_file:
+      - .docker_env
+    environment:
+      ANYCABLE_RPC_HOST: 0.0.0.0:50051
+    ports:
+      - '50051'

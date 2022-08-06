@@ -6,6 +6,6 @@ class ComponentMessageCableJob < SidekiqJob
 
     Rails.logger.info("#{self.class.name} call channel: #{channel}, message: #{message}")
 
-    ActionCable.server.broadcast channel, message.to_json
+    ActionCable.server.broadcast channel, message
   end
 end
