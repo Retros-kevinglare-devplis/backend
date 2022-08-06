@@ -5,6 +5,7 @@ module Api
         include Interactor::Organizer
 
         organize Validations::SignUpContractInteractor,
+                 Validations::FindUserByEmailInteractor,
                  Actions::GenerationEncryptedPasswordInteractor,
                  Actions::PrepareUserInteractor,
                  Actions::PrepareAuthTokenInteractor,

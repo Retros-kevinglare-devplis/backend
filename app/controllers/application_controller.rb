@@ -4,6 +4,12 @@ class ApplicationController < ActionController::API
   before_action :authenticate_user!
   helper_method :user, :authenticate_user!
 
+  rescue_from StandardError do |e|
+    data = { error: { server: ['Houston we have a problem'] }}
+    data[:exception] = e.message
+    render json: data, status: :internal_server_error
+  end
+
   def render_json(result, params: {})
     caller_method ||= caller_locations(1, 1)[0].label
     log_message = "Response #{user_id} ##{caller_method}"
