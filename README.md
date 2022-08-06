@@ -6,7 +6,7 @@ result = Api::V1::Users::SignUpInteractor.call(params: params)
 result.data
 ```
 ### WS
-```json
+```js
 let ws = new WebSocket('ws://localhost:8080/cable?token=JWT_TOKEN');
 
 ws.onopen = function(){
@@ -18,6 +18,6 @@ ws.onmessage = function(msg) {
 }
 ```
 ### Docker
-```json
+```bash
 docker-compose up --build --force-recreate --no-deps
 ```
