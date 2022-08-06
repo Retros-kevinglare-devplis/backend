@@ -1,6 +1,23 @@
 # README
-
+### Seeds
 ```ruby
-q = User.new(email: 'admin@mail.ru', username: 'admin', first_name: 'retro', last_name: 'sprint', encrypted_password: Digest::SHA256.hexdigest('123123'))
-w = AuthToken.create(user: q, expired_at: Time.current + 1.week, refresh_token: SecureRandom.uuid)
+params = { email: 'admin@mail.ru', password: '123123' }
+result = Api::V1::Users::SignUpInteractor.call(params: params)
+result.data
+```
+### WS
+```json
+let ws = new WebSocket('ws://localhost:8080/cable?token=JWT_TOKEN');
+
+ws.onopen = function(){
+  ws.send(JSON.stringify({"command": "subscribe","identifier": "{\"channel\": \"RetroChannel\", \"team_id\": \"TEAM_ID\", \"retro_id\":\"RETRO_ID\"}"}))
+}    
+
+ws.onmessage = function(msg) {
+  console.log(JSON.parse(msg.data).message);
+}
+```
+### Docker
+```json
+docker-compose up --build --force-recreate --no-deps
 ```

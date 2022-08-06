@@ -76,9 +76,6 @@ GEM
       actioncable (>= 6.0)
       anycable (~> 1.2.0)
       globalid
-    anycable-rails-jwt (0.1.0)
-      anycable-rails (~> 1.1)
-      jwt (~> 2.2)
     anyway_config (2.3.0)
       ruby-next-core (>= 0.14.0)
     bcrypt (3.1.18)
@@ -249,7 +246,6 @@ PLATFORMS
 
 DEPENDENCIES
   anycable-rails
-  anycable-rails-jwt
   bcrypt
   bootsnap
   debug

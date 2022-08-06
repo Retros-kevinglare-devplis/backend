@@ -13,7 +13,6 @@ gem 'interactor', '~> 3.0'
 gem 'dry-validation'
 
 gem 'anycable-rails'
-gem 'anycable-rails-jwt'
 gem 'redis'
 gem 'sidekiq', '>= 6.5.1'
 

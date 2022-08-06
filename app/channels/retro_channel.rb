@@ -2,7 +2,9 @@ class RetroChannel < ApplicationCable::Channel
   def subscribed
     stop_all_streams
 
-    team = current_user.teams_collaborators.find_by(id: params[:team_id])
+    user = User.find(self.current_user)
+
+    team = user.teams_collaborators.find_by(id: params[:team_id])
     raise StandardError, "Team #{params[:team_id]} not found" if team.blank?
 
     retro = team.retros.find_by(id: params[:retro_id])

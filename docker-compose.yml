@@ -55,3 +55,6 @@ services:
       ANYCABLE_RPC_HOST: 0.0.0.0:50051
     ports:
       - '50051'
+    volumes:
+      - .:/app
+      - .:/app/tmp
