@@ -15,17 +15,18 @@ module Retrosprint
   class Application < Rails::Application
     config.load_defaults 7.0
     config.api_only = true
+
     config.time_zone = 'Europe/Moscow'
     config.active_job.queue_adapter = :sidekiq
 
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.default_url_options = { host: ENV['HOST'], protocol: ENV['PROTOCOL'] }
     config.action_mailer.smtp_settings = {
-      :address              => "smtp.gmail.com",
+      :address              => 'smtp.gmail.com"',
       :port                 => 587,
       :user_name            => ENV['EMAIL_USERNAME'],
       :password             => ENV['EMAIL_PASSWORD'],
-      :authentication       => "plain",
+      :authentication       => 'plain',
       :enable_starttls_auto => true
     }
   end

@@ -33,6 +33,6 @@ class Api::V1::RetrosController < ApplicationController
   end
 
   def retro_params
-    params.permit(:team_id, components: [:id, :type, :_deleted, data:{}])
+    params.permit(:team_id, components: [:id, :type, data: {}])
   end
 end

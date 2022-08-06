@@ -11,5 +11,9 @@ module ApplicationCable
         reject_unauthorized_connection
       end
     end
+
+    def disconnect
+      Rails.logger.info("Disconnected: #{self}")
+    end
   end
 end

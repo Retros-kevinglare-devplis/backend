@@ -19,7 +19,7 @@ class ApplicationController < ActionController::API
       )
 
       response = { error: result.error }
-      response[:message] = result.message if Rails.env.development?
+      response[:exception] = result.message if Rails.env.development?
     end
 
     render json: response, status: result.status
