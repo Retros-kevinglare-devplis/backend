@@ -12,6 +12,7 @@ gem 'jsonapi-serializer'
 gem 'interactor', '~> 3.0'
 gem 'dry-validation'
 
+gem 'anycable-rails'
 gem 'redis'
 gem 'sidekiq', '>= 6.5.1'
 

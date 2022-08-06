@@ -6,7 +6,7 @@ module ApplicationCable
       current_user = AuthService.get_user_ws(token: request.params[:token])
       if current_user.present?
         Rails.logger.info "User #{current_user.id} connected"
-        self.current_user = current_user
+        self.current_user = current_user.id.to_s
       else
         reject_unauthorized_connection
       end
