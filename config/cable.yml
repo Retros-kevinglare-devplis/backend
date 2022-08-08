@@ -1,8 +1,8 @@
 development:
-  adapter: <%= ENV.fetch("ACTION_CABLE_ADAPTER", "any_cable") %>
+  adapter: <%= ENV.fetch('ACTION_CABLE_ADAPTER') %>
 
 test:
   adapter: test
 
 production:
-  adapter: <%= ENV.fetch("ACTION_CABLE_ADAPTER", "any_cable") %>
+  adapter: <%= ENV.fetch('ACTION_CABLE_ADAPTER') %>
