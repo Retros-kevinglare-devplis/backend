@@ -18,7 +18,7 @@ services:
     container_name: backend
     build: .
     env_file:
-      - .docker_env
+      - .env.docker
     volumes:
       - .:/app
     ports:
@@ -33,7 +33,7 @@ services:
       - redis
     build: .
     env_file:
-      - .docker_env
+      - .env.docker
     command: bundle exec sidekiq
     volumes:
       - .:/app
@@ -44,13 +44,13 @@ services:
     ports:
       - '8080:8080'
     env_file:
-      - .docker_env
+      - .env.docker
 
   anycable:
     build: .
     command: bundle exec anycable
     env_file:
-      - .docker_env
+      - .env.docker
     environment:
       ANYCABLE_RPC_HOST: 0.0.0.0:50051
     ports:

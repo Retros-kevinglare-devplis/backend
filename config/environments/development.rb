@@ -3,7 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Specify AnyCable WebSocket server URL to use by JS client
   config.after_initialize do
-    config.action_cable.url = ActionCable.server.config.url = ENV.fetch("CABLE_URL", "ws://localhost:8080/cable") if AnyCable::Rails.enabled?
+    config.action_cable.url = ActionCable.server.config.url = ENV.fetch('CABLE_URL') if AnyCable::Rails.enabled?
   end
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -56,6 +56,6 @@ Rails.application.configure do
   # config.action_view.annotate_rendered_view_with_filenames = true
 
   # Uncomment if you wish to allow Action Cable access from any origin.
-  config.action_cable.url = 'ws://localhost:3000/cable'
+  config.action_cable.url = ENV['CABLE_URL']
   config.action_cable.disable_request_forgery_protection = true
 end

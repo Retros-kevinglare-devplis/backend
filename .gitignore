@@ -26,7 +26,7 @@
 /config/environments/*.local.yml
 
 .idea
-.env
+.env.*
 .docker_env
 .data
 /**/**/.DS_Store
