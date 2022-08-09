@@ -8,4 +8,3 @@ RUN bundle install
 EXPOSE 3000 8080
 
 CMD ./docker-entrypoint.sh
-

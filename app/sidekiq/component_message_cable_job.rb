@@ -1,11 +1,8 @@
 class ComponentMessageCableJob < SidekiqJob
   sidekiq_options queue: :components
 
-  def perform(team_id, retro_id, message)
-    channel = "retro:v1_team_id_#{team_id}_retro_id_#{retro_id}_channel"
-
-    Rails.logger.info("#{self.class.name} call channel: #{channel}, message: #{message}")
-
-    ActionCable.server.broadcast channel, message
+  def perform(retro_id, message)
+    retro = Retro.find_by(id: retro_id)
+    RetroChannel.broadcast_to retro, message
   end
 end
