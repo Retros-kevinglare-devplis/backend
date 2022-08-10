@@ -5,6 +5,6 @@ WORKDIR /app
 COPY Gemfile* ./
 RUN bundle install
 
-EXPOSE 3000 8080
+EXPOSE 9292 9293
 
 CMD ./docker-entrypoint.sh

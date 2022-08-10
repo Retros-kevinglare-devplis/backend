@@ -42,7 +42,7 @@ services:
   ws:
     image: anycable/anycable-go:1.2
     ports:
-      - '8080:8080'
+      - '9293:8080'
     env_file:
       - .env.docker
 
