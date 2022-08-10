@@ -22,7 +22,7 @@ services:
     volumes:
       - .:/app
     ports:
-      - "3000:3000"
+      - "9292:9292"
     links:
       - mongodb
       - redis
