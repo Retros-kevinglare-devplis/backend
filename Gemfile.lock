@@ -99,6 +99,11 @@ GEM
       async
     async-pool (0.3.10)
       async (>= 1.25)
+    async-redis (0.7.0)
+      async (>= 1.8, < 3.0)
+      async-io (~> 1.10)
+      async-pool (~> 0.2)
+      protocol-redis (~> 0.6.0)
     bcrypt (3.1.18)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
@@ -238,6 +243,7 @@ GEM
     protocol-http2 (0.14.2)
       protocol-hpack (~> 1.4)
       protocol-http (~> 0.18)
+    protocol-redis (0.6.1)
     racc (1.6.0)
     rack (2.2.4)
     rack-cors (1.1.1)
@@ -301,6 +307,7 @@ PLATFORMS
 
 DEPENDENCIES
   anycable-rails
+  async-redis
   bcrypt
   bootsnap
   debug
