@@ -17,10 +17,11 @@ class ApplicationController < ActionController::API
     log_message = "Response #{user_id} ##{caller_method}"
 
     if result.success?
-      response = result.data
-      Rails.logger.error(
+      Rails.logger.info(
         "#{log_message} success - data: #{result.data}, message: #{result.message}, params: #{params}"
       )
+
+      response = result.data
     else
       Rails.logger.error(
         "#{log_message} failure - error: #{result.error}, message: #{result.message}, params: #{params}"
@@ -30,7 +31,7 @@ class ApplicationController < ActionController::API
       response[:exception] = result.message if SHOW_EXCEPTION
     end
 
-    render json: response, status: result.status
+    render json: response.deep_transform_keys { |f| f.to_s.camelize(:lower) }, status: result.status
   end
 
   private
