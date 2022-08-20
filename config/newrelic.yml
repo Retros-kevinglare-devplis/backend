@@ -1,0 +1,31 @@
+common: &default_settings
+  license_key: <%= ENV['NEWRELIC_KEY'] %>
+  app_name: RetroSprint
+  distributed_tracing:
+    enabled: true
+  log_level: error
+
+  application_logging:
+    enabled: true
+    forwarding:
+      enabled: true
+      max_samples_stored: 10000
+    metrics:
+      enabled: true
+    local_decorating:
+      enabled: false
+
+development:
+  <<: *default_settings
+  monitor_mode: false
+
+test:
+  <<: *default_settings
+  monitor_mode: false
+
+staging:
+  <<: *default_settings
+  monitor_mode: false
+
+production:
+  <<: *default_settings
