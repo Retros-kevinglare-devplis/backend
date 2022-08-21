@@ -29,8 +29,6 @@ services:
     entrypoint: "./docker-entrypoint.sh"
 
   sidekiq:
-    links:
-      - redis
     build: .
     env_file:
       - .env.docker
@@ -53,6 +51,8 @@ services:
     command: bundle exec anycable
     env_file:
       - .env.docker
+    environment:
+      ANYCABLE_RPC_HOST: 0.0.0.0:50051
     ports:
       - '50051'
     volumes:
