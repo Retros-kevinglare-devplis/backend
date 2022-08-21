@@ -23,21 +23,23 @@ services:
       - .:/app
     ports:
       - "9292:9292"
-    links:
+    depends_on:
       - mongodb
       - redis
+    entrypoint: "./docker-entrypoint.sh"
 
   sidekiq:
     links:
-      - mongodb
       - redis
     build: .
     env_file:
       - .env.docker
     command: bundle exec sidekiq
+    depends_on:
+      - mongodb
+      - redis
     volumes:
       - .:/app
-      - .:/app/tmp
 
   ws:
     image: anycable/anycable-go:1.2
@@ -51,10 +53,9 @@ services:
     command: bundle exec anycable
     env_file:
       - .env.docker
-    environment:
-      ANYCABLE_RPC_HOST: 0.0.0.0:50051
     ports:
       - '50051'
     volumes:
       - .:/app
-      - .:/app/tmp
+    depends_on:
+      - backend

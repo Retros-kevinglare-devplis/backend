@@ -15,7 +15,6 @@ gem 'dry-validation'
 
 gem 'anycable-rails'
 gem 'redis'
-gem 'async-redis'
 gem 'sidekiq', '>= 6.5.1'
 
 gem 'mongoid', '>= 6.0', '< 8.a'

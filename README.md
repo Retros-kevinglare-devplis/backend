@@ -23,5 +23,7 @@ ws.onmessage = function(msg) {
 
 ### Docker
 ```bash
+docker build --no-cache .
+docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
 docker-compose up --build --force-recreate --no-deps
 ```
