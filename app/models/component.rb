@@ -12,4 +12,13 @@ class Component
   embedded_in :retro
 
   after_save :send_message
+
+  private
+
+  def send_message
+    ComponentMessageCableJob.perform_async(
+      retro_id: retro.id.to_s,
+      message: Api::V1::ComponentSerializer.new(q).serializable_hash.to_json
+    )
+  end
 end
