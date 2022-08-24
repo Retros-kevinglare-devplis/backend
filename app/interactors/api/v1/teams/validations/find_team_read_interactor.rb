@@ -9,7 +9,7 @@ class Api::V1::Teams::Validations::FindTeamReadInteractor < ApplicationInteracto
     if collaborator.present?
       context.team = collaborator.team
     else
-      error = { team: ["Team not found id #{team_id}"] }
+      error = { team: ["#{team_id} not found"] }
       context.message = "#{self.class.name} error: #{error.to_h}"
       context.error = error
       context.status = :not_found

@@ -12,7 +12,7 @@ class Api::V1::Invites::Validations::FindInviteInteractor < ApplicationInteracto
     if invite.present?
       context.invite = invite
     else
-      error = { invite: ["Invite #{invite_id} not found by team #{team_id}"] }
+      error = { invite: ["#{invite_id} not found by team #{team_id}"] }
       context.message = "#{self.class.name} error: #{error}"
       context.error = error
       context.status = :unprocessable_entity

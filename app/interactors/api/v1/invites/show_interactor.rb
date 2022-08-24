@@ -4,7 +4,7 @@ module Api
       class ShowInteractor < ApplicationInteractor
         include Interactor::Organizer
 
-        organize Validations::InviteCreateContractInteractor,
+        organize Validations::InviteFindContractInteractor,
                  Validations::CheckReadInviteInteractor,
                  Validations::FindInviteInteractor,
                  Actions::ResponseInviteInteractor

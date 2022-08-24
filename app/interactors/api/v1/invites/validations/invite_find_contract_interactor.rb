@@ -1,9 +1,9 @@
-class Api::V1::Invites::Validations::InviteCreateContractInteractor < ApplicationInteractor
+class Api::V1::Invites::Validations::InviteFindContractInteractor < ApplicationInteractor
   include Interactor::Organizer
 
   def call
     params = context.params
-    contract = Contracts::Api::V1::Invites::InviteCreateContract.call(params)
+    contract = Contracts::Api::V1::Invites::InviteFindContract.call(params)
     return if contract.success?
 
     context.message = "#{self.class.name} error: #{contract.errors.to_h}"

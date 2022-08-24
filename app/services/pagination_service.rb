@@ -17,11 +17,9 @@ class PaginationService < ApplicationService
       cursor: cursor.limit(per_page).skip(skip),
       options: {
         links: {
-          links: {
-            first: send(path, per_page: per_page),
-            self: send(path, page: current_page, per_page: per_page),
-            last: send(path, page: total_pages, per_page: per_page)
-          }
+          first: send(path, per_page: per_page),
+          self: send(path, page: current_page, per_page: per_page),
+          last: send(path, page: total_pages, per_page: per_page)
         }
       }
     }

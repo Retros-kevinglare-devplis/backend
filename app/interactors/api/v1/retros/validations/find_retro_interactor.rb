@@ -12,7 +12,7 @@ class Api::V1::Retros::Validations::FindRetroInteractor < ApplicationInteractor
     if retro.present?
       context.retro = retro
     else
-      error = { retro: ["Retro #{retro_id} not found by team #{team_id}"] }
+      error = { retro: ["#{retro_id} not found by team #{team_id}"] }
       context.message = "#{self.class.name} error: #{error}"
       context.error = error
       context.status = :unprocessable_entity
