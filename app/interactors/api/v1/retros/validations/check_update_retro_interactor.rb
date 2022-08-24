@@ -13,7 +13,7 @@ class Api::V1::Retros::Validations::CheckUpdateRetroInteractor < ApplicationInte
     if collaborator.present?
       context.team = collaborator.team
     else
-      error = { retro: ["Not enough rights by team #{team_id}"] }
+      error = { team: ["Not enough rights by team #{team_id}"] }
       context.message = "#{self.class.name} error: #{error}"
       context.error = error
       context.status = :unprocessable_entity

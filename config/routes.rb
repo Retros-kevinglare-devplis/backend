@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
       resources :teams, only: %i[index create update destroy show] do
         resources :retros, only: %i[index create update destroy show]
-        resources :invites, only: %i[index create update destroy]
+        resources :invites, only: %i[index create update destroy show]
         resources :collaborators, only: %i[index create update destroy]
       end
     end

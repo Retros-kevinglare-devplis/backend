@@ -9,7 +9,7 @@ class Invite
   field :recipient_id, type: BSON::ObjectId
   field :team_id, type: BSON::ObjectId
   field :collaboration_id, type: BSON::ObjectId
-  field :email, type: Time
+  field :email, type: String
   field :expired_at, type: Time
   field :token, type: String
   field :status, type: Integer
@@ -21,11 +21,11 @@ class Invite
   index({ email: 1 })
   index({ token: 1 }, { unique: true })
 
-  validates :email, :expired_at, :token, presence: true
+  validates :email, :expired_at, :token, :sender_id, presence: true
 
-  belongs_to :sender, class_name: 'User'
-  belongs_to :recipient, class_name: 'User', optional: true
-  belongs_to :collaborator
+  belongs_to :sender, class_name: 'User', inverse_of: :sender_invites
+  belongs_to :recipient, class_name: 'User', inverse_of: :recipient_invites, optional: true
+  belongs_to :collaborator, optional: true
   belongs_to :team
 
   STATUS_WAITING = 0
