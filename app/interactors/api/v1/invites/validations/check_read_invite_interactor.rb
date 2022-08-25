@@ -11,7 +11,7 @@ class Api::V1::Invites::Validations::CheckReadInviteInteractor < ApplicationInte
     if collaborator.present?
       context.team = collaborator.team
     else
-      error = { team: ["Not enough rights by team #{team_id}"] }
+      error = { team: ["not enough rights by team #{team_id}"] }
       context.message = "#{self.class.name} error: #{error}"
       context.error = error
       context.status = :unprocessable_entity

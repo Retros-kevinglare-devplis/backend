@@ -38,7 +38,7 @@ class ApplicationController < ActionController::API
 
   def authenticate_user!
     render_json OpenStruct.new(
-      error: { user: 'Application registration data not valid' },
+      error: { user: 'application registration data is invalid' },
       status: :unauthorized,
       message: "Token #{request.headers['Authorization']} invalid"
     ) unless user_logged_in?
