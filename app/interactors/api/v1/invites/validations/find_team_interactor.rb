@@ -1,4 +1,4 @@
-class Api::V1::Invites::Validations::CheckReadInviteInteractor < ApplicationInteractor
+class Api::V1::Invites::Validations::FindTeamInteractor < ApplicationInteractor
   include Interactor::Organizer
 
   def call

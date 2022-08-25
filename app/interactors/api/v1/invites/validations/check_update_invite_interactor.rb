@@ -4,15 +4,17 @@ class Api::V1::Invites::Validations::CheckUpdateInviteInteractor < ApplicationIn
   def call
     user = context.user
     params = context.params
+    team = context.team
     team_id = params[:team_id]
-    invite_id = params[:id]
 
-    invite = Invite.find_by(id: invite_id, team_id: team_id)
+    collaborator = user.collaborators.find_by(
+      team_id: team_id, status: { '$in':[Collaborator::STATUS_OWNER, Collaborator::STATUS_ADMIN] }
+    )
 
-    if invite.present? && (invite.sender_id == user.id || invite.recipient_id == user.id)
-      context.invite = invite
+    if collaborator.present?
+      context.team = collaborator.team
     else
-      error = { invite: ["#{invite_id} not enough rights by team #{team_id}"] }
+      error = { invite: ["not enough rights by team #{team.id}"] }
       context.message = "#{self.class.name} error: #{error}"
       context.error = error
       context.status = :unprocessable_entity

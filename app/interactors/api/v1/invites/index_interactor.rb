@@ -5,7 +5,7 @@ module Api
         include Interactor::Organizer
 
         organize Validations::InviteIndexContractInteractor,
-                 Validations::CheckReadInviteInteractor,
+                 Validations::FindTeamInteractor,
                  Validations::FindInvitesInteractor,
                  Actions::ResponseInvitesInteractor
       end

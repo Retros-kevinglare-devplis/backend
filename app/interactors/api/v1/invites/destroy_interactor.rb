@@ -6,6 +6,7 @@ module Api
 
         organize Validations::InviteShowContractInteractor,
                  Validations::CheckUpdateInviteInteractor,
+                 Validations::FindInviteInteractor,
                  Actions::DestroyInviteInteractor
       end
     end

@@ -3,7 +3,7 @@ class Api::V1::Invites::Actions::ResponseInvitesInteractor < ApplicationInteract
 
   def call
     invites = context.invites
-    options = context.options.merge(include: [:team])
+    options = context.options.merge(include: [:team, :sender, :recipient]) # @TODO: collaborator
 
     context.data = Api::V1::InvitesSerializer.new(invites, options).serializable_hash
     context.status = :ok

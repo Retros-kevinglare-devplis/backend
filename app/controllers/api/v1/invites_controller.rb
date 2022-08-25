@@ -33,6 +33,6 @@ class Api::V1::InvitesController < ApplicationController
   end
 
   def invite_params
-    params.permit(:team_id, :recipient_id, :collaboration_id, :email )
+    params.permit(:team_id, :email, :status)
   end
 end
