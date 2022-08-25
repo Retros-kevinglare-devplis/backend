@@ -11,7 +11,6 @@ class Invite
   field :collaboration_id, type: BSON::ObjectId
   field :email, type: String
   field :expired_at, type: Time
-  field :token, type: String
   field :status, type: Integer
 
   index({ sender_id: 1 })
@@ -19,9 +18,8 @@ class Invite
   index({ team_id: 1 })
   index({ collaboration_id: 1 })
   index({ email: 1 })
-  index({ token: 1 }, { unique: true })
 
-  validates :email, :expired_at, :token, :sender_id, presence: true
+  validates :email, :expired_at, :sender_id, presence: true
 
   belongs_to :sender, class_name: 'User', inverse_of: :sender_invites
   belongs_to :recipient, class_name: 'User', inverse_of: :recipient_invites, optional: true
