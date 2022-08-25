@@ -4,7 +4,7 @@ module Api
       class IndexInteractor < ApplicationInteractor
         include Interactor::Organizer
 
-        organize Validations::InviteFindContractnteractor,
+        organize Validations::InviteIndexContractInteractor,
                  Validations::CheckReadInviteInteractor,
                  Validations::FindInvitesInteractor,
                  Actions::ResponseInvitesInteractor

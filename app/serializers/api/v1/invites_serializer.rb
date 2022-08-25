@@ -1,4 +1,4 @@
-class Api::V1::InviteSerializer < ApplicationSerializer
+class Api::V1::InvitesSerializer < ApplicationSerializer
   set_type :invite
 
   attributes  :email, :expired_at, :token, :status, :created_at, :updated_at
