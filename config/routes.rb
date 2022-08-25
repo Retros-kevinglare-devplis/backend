@@ -1,4 +1,8 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
+
   namespace :api, path: ENV['API_PATH'], defaults: { format: :json } do
     namespace :v1 do
       scope :users do

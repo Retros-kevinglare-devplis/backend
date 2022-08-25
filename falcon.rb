@@ -8,6 +8,5 @@ HOST = "#{ENV.fetch('PROTOCOL')}://#{ENV.fetch('HOST')}".freeze
 
 rack hostname do
   append preload 'config/preload.rb'
-  cache true
   endpoint Async::HTTP::Endpoint.parse(HOST).with(protocol: Async::HTTP::Protocol::HTTP11)
 end

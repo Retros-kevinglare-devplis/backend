@@ -19,6 +19,10 @@ module Retrosprint
     config.time_zone = 'Europe/Moscow'
     config.active_job.queue_adapter = :sidekiq
 
+    config.session_store :cookie_store, key: '_interslice_session'
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use config.session_store, config.session_options
+
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.default_url_options = { host: ENV['HOST'], protocol: ENV['PROTOCOL'] }
     config.action_mailer.smtp_settings = {
