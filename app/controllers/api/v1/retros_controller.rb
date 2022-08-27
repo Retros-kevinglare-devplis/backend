@@ -1,4 +1,4 @@
-class Api::V1::RetrosController < ApplicationController
+class Api::V1::RetrosController < ApiController
   include Pagination
 
   def index

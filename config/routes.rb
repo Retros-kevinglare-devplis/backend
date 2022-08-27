@@ -1,7 +1,9 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  mount Sidekiq::Web => '/sidekiq'
+  authenticate :admin_user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   namespace :api, path: ENV['API_PATH'], defaults: { format: :json } do
     namespace :v1 do
@@ -19,4 +21,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  root to: 'admin/static#dashboard'
 end

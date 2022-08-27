@@ -1,4 +1,4 @@
-class Api::V1::InvitesController < ApplicationController
+class Api::V1::InvitesController < ApiController
   include Pagination
 
   def index

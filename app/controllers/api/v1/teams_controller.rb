@@ -1,4 +1,4 @@
-class Api::V1::TeamsController < ApplicationController
+class Api::V1::TeamsController < ApiController
   include Pagination
 
   def index

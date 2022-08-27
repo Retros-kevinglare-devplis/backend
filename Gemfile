@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.2'
 
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
-# gem 'puma', '~> 5.0'
 gem 'falcon'
 gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 gem 'bootsnap', require: false
@@ -12,6 +11,9 @@ gem 'rack-cors'
 gem 'jsonapi-serializer'
 gem 'interactor', '~> 3.0'
 gem 'dry-validation'
+gem 'sprockets'
+gem 'sass-rails'
+gem 'activeresource'
 
 gem 'anycable-rails'
 gem 'redis'
@@ -19,8 +21,11 @@ gem 'sidekiq', '>= 6.5.1'
 
 gem 'mongoid', '>= 6.0', '< 8.a'
 gem 'mongoid_paranoia'
+gem 'ransack-mongoid', github: 'activerecord-hackery/ransack-mongoid'
+
 gem 'enumerize'
 
+gem 'devise'
 gem 'jwt'
 gem 'bcrypt'
 
