@@ -1,3 +1,3 @@
-class Admin::StaticController < ::ApplicationController
+class Admin::StaticController < AdminController
   def dashboard; end
 end

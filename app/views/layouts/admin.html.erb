@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RetrosprintBackend</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+</head>
+
+<body>
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="<%=  %>">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#projects">Проекты</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav nav navbar-nav navbar-right">
+        <li class="nav-item">
+          <a class="nav-link" href="<%= destroy_admin_user_session_path %>" target="_blank">Sign out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<section>
+  <div class="container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </div>
+</section>
+</body>
+</html>

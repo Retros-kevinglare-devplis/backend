@@ -1,8 +1,13 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  devise_for :admin_users, path: 'admin'
   authenticate :admin_user do
     mount Sidekiq::Web => '/sidekiq'
+
+    namespace :admin do
+      resources :users
+    end
   end
 
   namespace :api, path: ENV['API_PATH'], defaults: { format: :json } do

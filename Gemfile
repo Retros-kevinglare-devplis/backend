@@ -19,6 +19,9 @@ gem 'anycable-rails'
 gem 'redis'
 gem 'sidekiq', '>= 6.5.1'
 
+gem 'jquery-rails'
+gem 'bootstrap'
+
 gem 'mongoid', '>= 6.0', '< 8.a'
 gem 'mongoid_paranoia'
 gem 'ransack-mongoid', github: 'activerecord-hackery/ransack-mongoid'
