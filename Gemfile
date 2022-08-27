@@ -24,6 +24,7 @@ gem 'bootstrap'
 
 gem 'mongoid', '>= 6.0', '< 8.a'
 gem 'mongoid_paranoia'
+gem 'ransack'
 gem 'ransack-mongoid', github: 'activerecord-hackery/ransack-mongoid'
 
 gem 'enumerize'

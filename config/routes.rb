@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
 
     namespace :admin do
+      get '/', to: 'static#dashboard', as: :dashboard
       resources :users
     end
   end
@@ -26,6 +27,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  root to: 'admin/static#dashboard'
 end

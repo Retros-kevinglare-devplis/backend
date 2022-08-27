@@ -2,6 +2,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Paranoia
+  include Ransack::Mongoid
 
   field :email, type: String
   field :encrypted_password, type: String

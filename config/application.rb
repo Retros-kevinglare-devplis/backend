@@ -17,15 +17,15 @@ Bundler.require(*Rails.groups)
 module Retrosprint
   class Application < Rails::Application
     config.load_defaults 7.0
-    config.api_only = true
+    # config.api_only = true
 
     config.time_zone = 'Europe/Moscow'
     config.active_job.queue_adapter = :sidekiq
 
-    config.middleware.use ActionDispatch::Flash
-    config.middleware.use Rack::MethodOverride
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore
+    # config.middleware.use ActionDispatch::Flash
+    # config.middleware.use Rack::MethodOverride
+    # config.middleware.use ActionDispatch::Cookies
+    # config.middleware.use ActionDispatch::Session::CookieStore
 
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.default_url_options = { host: ENV['HOST'], protocol: ENV['PROTOCOL'] }
