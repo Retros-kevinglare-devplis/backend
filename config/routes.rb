@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api, path: 'api', defaults: { format: :json } do
+  namespace :api, path: ENV['API_PATH'], defaults: { format: :json } do
     namespace :v1 do
       scope :users do
         post '/sign_up', to: 'users#sign_up'
