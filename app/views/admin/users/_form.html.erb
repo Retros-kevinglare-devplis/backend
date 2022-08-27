@@ -1,7 +1,7 @@
 <%= form_with(model: @user, url: user.username.present? ? admin_user_path(user) : admin_users_path) do |f| %>
   <% if @user.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <b><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</b>
       <ul>
         <% @user.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -36,6 +36,20 @@
       <div class="form-group">
         <%= f.label :last_name, style: "display: block" %>
         <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= f.label :password, style: "display: block" %>
+        <%= f.text_field :password, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= f.label :password_confirmation, style: "display: block" %>
+        <%= f.text_field :password_confirmation, class: 'form-control' %>
       </div>
     </div>
   </div>

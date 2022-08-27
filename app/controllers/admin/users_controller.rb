@@ -1,30 +1,26 @@
 class Admin::UsersController < AdminController
+  include Pagination
+
   before_action :set_user, only: %i[show edit update destroy]
 
   # GET /users
   def index
-    @users = User.all
-  end
+    pagination = PaginationService.call(
+      cursor: User.all,
+      current_page: current_page,
+      per_page: per_page,
+      path: 'admin_users_path'
+    )
 
-  # GET /users/new
-  def new; end
+    @users = pagination[:cursor]
+    @options = pagination[:options]
+  end
 
   # GET /users/1/edit
   def edit; end
 
   # GET /users/1
   def show; end
-
-  # POST /users
-  def create
-    @user = User.new(user_params)
-
-    if @user.save
-      redirect_to admin_user_path(@user), notice: "User was successfully created."
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
 
   # PATCH/PUT /users/1
   def update
