@@ -2,7 +2,7 @@ class AdminUser
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :validatable
 
   ## Database authenticatable
   field :email,              type: String, default: ""
