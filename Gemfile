@@ -13,7 +13,6 @@ gem 'interactor', '~> 3.0'
 gem 'dry-validation'
 gem 'sprockets'
 gem 'sass-rails'
-gem 'activeresource'
 
 gem 'anycable-rails'
 gem 'redis'
