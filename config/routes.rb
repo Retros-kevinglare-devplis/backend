@@ -3,9 +3,9 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   devise_for :admin_users, path: 'admin'
   authenticate :admin_user do
-    mount Sidekiq::Web => '/sidekiq'
-
     namespace :admin do
+      mount Sidekiq::Web => '/sidekiq'
+
       get '/', to: 'static#dashboard', as: :dashboard
       resources :users, except: %i[new create]
     end
