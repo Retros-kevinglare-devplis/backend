@@ -20,4 +20,3 @@ class Api::V1::Invites::Validations::FindInviteInteractor < ApplicationInteracto
     end
   end
 end
-
