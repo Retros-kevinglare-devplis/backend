@@ -6,7 +6,7 @@ class Api::V1::Users::Validations::FindUserByEmailInteractor < ApplicationIntera
     user = User.find_by(email: params[:email])
     return if user.blank?
 
-    error = { user: ['User already exist']}
+    error = { user: ['already exist'] }
     context.message = "#{self.class.name} error: #{error}"
     context.error = error
     context.status = :unprocessable_entity

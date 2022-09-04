@@ -4,7 +4,7 @@ class Api::V1::Teams::Actions::ResponseTeamInteractor < ApplicationInteractor
   def call
     team = context.team
     options = {
-      include: [:retros, :user, :collaborators, :invites]
+      include: %i[retros user collaborators invites]
     }
     context.data = Api::V1::TeamSerializer.new(team, options).serializable_hash
 

@@ -4,7 +4,7 @@ class Api::V1::Retros::Actions::ResponseRetroInteractor < ApplicationInteractor
   def call
     retro = context.retro
     options = {
-      include: [:team, :components]
+      include: %i[team components]
     }
     context.data = Api::V1::RetroSerializer.new(retro, options).serializable_hash
 

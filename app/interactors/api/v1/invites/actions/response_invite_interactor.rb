@@ -4,7 +4,7 @@ class Api::V1::Invites::Actions::ResponseInviteInteractor < ApplicationInteracto
   def call
     invite = context.invite
     options = {
-      include: [:team, :sender, :recipient] # @TODO: collaborator
+      include: %i[team sender recipient] # @TODO: collaborator
     }
     context.data = Api::V1::InviteSerializer.new(invite, options).serializable_hash
 

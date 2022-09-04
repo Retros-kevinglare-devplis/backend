@@ -7,7 +7,7 @@ class ApiController < ActionController::API
   helper_method :user, :authenticate_user!
 
   rescue_from StandardError do |e|
-    data = { error: { server: ['Houston we have a problem'] }}
+    data = { error: { server: ['Houston we have a problem'] } }
     data[:exception] = e.message if SHOW_EXCEPTION
     render json: data, status: :internal_server_error
   end
@@ -37,11 +37,13 @@ class ApiController < ActionController::API
   private
 
   def authenticate_user!
-    render_json OpenStruct.new(
-      error: { user: 'application registration data is invalid' },
-      status: :unauthorized,
-      message: "Token #{request.headers['Authorization']} invalid"
-    ) unless user_logged_in?
+    unless user_logged_in?
+      render_json OpenStruct.new(
+        error: { user: 'application registration data is invalid' },
+        status: :unauthorized,
+        message: "Token #{request.headers['Authorization']} invalid"
+      )
+    end
   end
 
   def user

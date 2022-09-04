@@ -6,9 +6,7 @@ class Api::V1::Invites::Actions::UpdateInviteInteractor < ApplicationInteractor
     params = context.params
     update_params = { status: params[:status] }
 
-    if invite.recipient.nil?
-      update_params[:recipient_id] = User.find_by(email: params[:email])
-    end
+    update_params[:recipient_id] = User.find_by(email: params[:email]) if invite.recipient.nil?
 
     if invite.update(update_params)
       context.invite = invite

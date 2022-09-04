@@ -7,7 +7,7 @@ class Api::V1::Retros::Validations::CheckUpdateRetroInteractor < ApplicationInte
     team_id = params[:team_id]
 
     collaborator = user.collaborators.find_by(
-      team_id: team_id, status: { '$in':[Collaborator::STATUS_OWNER, Collaborator::STATUS_ADMIN] }
+      team_id:, status: { '$in': [Collaborator::STATUS_OWNER, Collaborator::STATUS_ADMIN] }
     )
 
     if collaborator.present?

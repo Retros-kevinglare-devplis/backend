@@ -7,8 +7,8 @@ class Admin::UsersController < AdminController
   def index
     pagination = PaginationService.call(
       cursor: User.all,
-      current_page: current_page,
-      per_page: per_page,
+      current_page:,
+      per_page:,
       path: 'admin_users_path'
     )
 
@@ -25,7 +25,7 @@ class Admin::UsersController < AdminController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      redirect_to admin_user_path(@user), notice: "User was successfully updated."
+      redirect_to admin_user_path(@user), notice: 'User was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class Admin::UsersController < AdminController
   # DELETE /users/1
   def destroy
     @user.destroy
-    redirect_to admin_users_path, notice: "User admin was successfully destroyed."
+    redirect_to admin_users_path, notice: 'User admin was successfully destroyed.'
   end
 
   private

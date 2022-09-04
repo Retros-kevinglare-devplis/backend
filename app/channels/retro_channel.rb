@@ -4,7 +4,7 @@ class RetroChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    message = data.fetch("message")
+    message = data.fetch('message')
     stream_for channel_name, message
   end
 
@@ -15,7 +15,7 @@ class RetroChannel < ApplicationCable::Channel
   private
 
   def user
-    @user ||= User.find_by!(id: self.current_user)
+    @user ||= User.find_by!(id: current_user)
   end
 
   def team
@@ -27,6 +27,6 @@ class RetroChannel < ApplicationCable::Channel
   end
 
   def channel_name
-    "retro:#{retro.id.to_s}"
+    "retro:#{retro.id}"
   end
 end

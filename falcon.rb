@@ -4,7 +4,7 @@
 load :rack
 
 hostname = File.basename(__dir__)
-HOST = "#{ENV.fetch('PROTOCOL') {'http'}}://#{ENV.fetch('HOST') { '0.0.0.0:9292'}}".freeze
+HOST = "#{ENV.fetch('PROTOCOL') { 'http' }}://#{ENV.fetch('HOST') { '0.0.0.0:9292' }}".freeze
 
 rack hostname do
   append preload 'config/preload.rb'

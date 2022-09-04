@@ -7,8 +7,8 @@ class Admin::TeamsController < AdminController
   def index
     pagination = PaginationService.call(
       cursor: Team.all,
-      current_page: current_page,
-      per_page: per_page,
+      current_page:,
+      per_page:,
       path: 'admin_teams_path'
     )
 
@@ -29,7 +29,7 @@ class Admin::TeamsController < AdminController
     @team = Team.new(team_params)
 
     if @team.save
-      redirect_to admin_team_path(@team), notice: "Team was successfully created."
+      redirect_to admin_team_path(@team), notice: 'Team was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -43,7 +43,7 @@ class Admin::TeamsController < AdminController
   # PATCH/PUT /teams/1
   def update
     if @team.update(team_params)
-      redirect_to admin_team_path(@team), notice: "Team was successfully updated."
+      redirect_to admin_team_path(@team), notice: 'Team was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -52,7 +52,7 @@ class Admin::TeamsController < AdminController
   # DELETE /teams/1
   def destroy
     @team.destroy
-    redirect_to admin_teams_path, notice: "Team admin was successfully destroyed."
+    redirect_to admin_teams_path, notice: 'Team admin was successfully destroyed.'
   end
 
   private

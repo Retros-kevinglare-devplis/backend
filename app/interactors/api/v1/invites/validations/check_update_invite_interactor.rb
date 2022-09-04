@@ -8,7 +8,7 @@ class Api::V1::Invites::Validations::CheckUpdateInviteInteractor < ApplicationIn
     team_id = params[:team_id]
 
     collaborator = user.collaborators.find_by(
-      team_id: team_id, status: { '$in':[Collaborator::STATUS_OWNER, Collaborator::STATUS_ADMIN] }
+      team_id:, status: { '$in': [Collaborator::STATUS_OWNER, Collaborator::STATUS_ADMIN] }
     )
 
     if collaborator.present?
