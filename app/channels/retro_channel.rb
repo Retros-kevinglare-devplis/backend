@@ -5,7 +5,11 @@ class RetroChannel < ApplicationCable::Channel
 
   def speak(data)
     message = data.fetch('message')
-    stream_for channel_name, message
+    channel = channel_name
+
+    CreateOrUpdateComponentsJob.perform_async(retro_id: retro.id, message:)
+
+    stream_for channel, message
   end
 
   def unsubscribed
