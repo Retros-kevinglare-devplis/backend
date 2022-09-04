@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
       get '/', to: 'static#dashboard', as: :dashboard
       resources :users, except: %i[new create]
+      resources :teams
     end
   end
 
