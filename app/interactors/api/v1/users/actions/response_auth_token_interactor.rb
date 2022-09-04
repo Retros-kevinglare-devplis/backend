@@ -9,8 +9,8 @@ class Api::V1::Users::Actions::ResponseAuthTokenInteractor < ApplicationInteract
     options = {
       include: [:user],
       params: {
-        access_token: access_token,
-        access_token_expired_at: access_token_expired_at
+        access_token:,
+        access_token_expired_at:
       }
     }
 

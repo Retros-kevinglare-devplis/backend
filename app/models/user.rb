@@ -29,6 +29,6 @@ class User
   private
 
   def send_sign_up_email
-    UserMailer.with(email: email).sign_up.deliver_later
+    UserMailer.with(email:).sign_up.deliver_later
   end
 end

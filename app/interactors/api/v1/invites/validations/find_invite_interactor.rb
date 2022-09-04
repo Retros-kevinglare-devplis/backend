@@ -1,5 +1,4 @@
 class Api::V1::Invites::Validations::FindInviteInteractor < ApplicationInteractor
-
   include Interactor::Organizer
 
   def call

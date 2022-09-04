@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-8">
+    <h2>Edit team: <%= @team.title %></h2>
+  </div>
+  <div class="col-4 d-flex align-items-center justify-content-end">
+    <%= link_to "Back", admin_team_path(@team), class: 'btn btn-secondary btn-sm' %>
+  </div>
+</div>
+<br>
+<%= render "form", team: @team %>

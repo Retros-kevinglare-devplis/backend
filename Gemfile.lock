@@ -99,9 +99,15 @@ GEM
       async
     async-pool (0.3.11)
       async (>= 1.25)
+    autoprefixer-rails (10.4.7.0)
+      execjs (~> 2)
     bcrypt (3.1.18)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
+    bootstrap (5.2.0)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 2.11.5, < 3)
+      sassc-rails (>= 2.0.0)
     bson (4.15.0)
     build-environment (1.13.0)
     builder (3.2.4)
@@ -113,6 +119,12 @@ GEM
     debug (1.6.2)
       irb (>= 1.3.6)
       reline (>= 0.3.1)
+    devise (4.8.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     digest (3.1.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
@@ -152,6 +164,7 @@ GEM
     enumerize (2.5.0)
       activesupport (>= 3.2)
     erubi (1.11.0)
+    execjs (2.8.1)
     falcon (0.42.1)
       async
       async-container (~> 0.16.0)
@@ -165,6 +178,7 @@ GEM
       process-metrics (~> 0.2.0)
       protocol-rack (~> 0.1.0)
       samovar (~> 2.1)
+    ffi (1.15.5)
     fiber-local (1.0.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -185,6 +199,10 @@ GEM
     io-event (1.0.9)
     irb (1.4.1)
       reline (>= 0.3.0)
+    jquery-rails (4.5.0)
+      rails-dom-testing (>= 1, < 3)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
     jsonapi-serializer (2.2.0)
       activesupport (>= 4.2)
     jwt (2.4.1)
@@ -229,6 +247,8 @@ GEM
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     openssl (3.0.0)
+    orm_adapter (0.5.0)
+    popper_js (2.11.5)
     process-metrics (0.2.1)
       console (~> 1.8)
       samovar (~> 2.1)
@@ -278,22 +298,45 @@ GEM
     redis (4.7.1)
     reline (0.3.1)
       io-console (~> 0.5)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     ruby-next-core (0.15.2)
     ruby2_keywords (0.0.5)
     samovar (2.1.4)
       console (~> 1.0)
       mapping (~> 1.0)
+    sass-rails (6.0.0)
+      sassc-rails (~> 2.1, >= 2.1.1)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     sidekiq (6.5.4)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.5.0)
+    sprockets (4.1.1)
+      concurrent-ruby (~> 1.0)
+      rack (> 1, < 3)
+    sprockets-rails (3.4.2)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
+      sprockets (>= 3.0.0)
     strscan (3.0.4)
     thor (1.2.1)
+    tilt (2.0.11)
     timeout (0.3.0)
     timers (4.3.3)
     traces (0.6.1)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -307,12 +350,15 @@ DEPENDENCIES
   anycable-rails
   bcrypt
   bootsnap
+  bootstrap
   debug
+  devise
   dotenv-rails
   dry-validation
   enumerize
   falcon
   interactor (~> 3.0)
+  jquery-rails
   jsonapi-serializer
   jwt
   mongoid (>= 6.0, < 8.a)
@@ -321,7 +367,9 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.3, >= 7.0.3.1)
   redis
+  sass-rails
   sidekiq (>= 6.5.1)
+  sprockets
   tzinfo-data
 
 RUBY VERSION

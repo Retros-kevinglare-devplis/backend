@@ -13,7 +13,7 @@ class Api::V1::Users::Actions::GenerationEncryptedPasswordInteractor < Applicati
       username: params[:username],
       first_name: params[:first_name],
       last_name: params[:last_name],
-      encrypted_password: encrypted_password
+      encrypted_password:
     }
 
     context.user_params = user_params

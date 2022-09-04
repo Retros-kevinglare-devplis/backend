@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-8">
+    <h2>User: <%= @user.email %></h2>
+  </div>
+  <div class="col-4 d-flex align-items-center justify-content-end">
+    <%= link_to "Edit", edit_admin_user_path(@user.id), class: 'btn btn-warning btn-sm m-2' %>
+    <%= link_to "Destroy", admin_user_path(@user.id), class: 'btn btn-danger btn-sm' %>
+  </div>
+</div>
+<hr>
+<h3>Info</h3>
+<div id="user">
+  <table class="table table-response table-striped table-bordered">
+    <tbody>
+    <tr>
+      <th>ID</th>
+      <td><%= @user.id %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <th>Username</th>
+      <td><%= @user.username %></td>
+    </tr>
+    <tr>
+      <th>First name</th>
+      <td><%= @user.first_name %></td>
+    </tr>
+    <tr>
+      <th>Last name</th>
+      <td><%= @user.last_name %></td>
+    </tr>
+    <tr>
+      <th>Created at</th>
+      <td><%= @user.created_at.iso8601 %></td>
+    </tr>
+    <tr>
+      <th>Updated at</th>
+      <td><%= @user.updated_at.iso8601 %></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<h3>Teams</h3>
+<div id="teams">
+  <table class="table table-response table-striped table-bordered">
+    <thead>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+    </thead>
+    <tbody>
+      <% @user.teams.each do |team| %>
+        <tr>
+          <td><%= link_to team.id, admin_team_path(team.id) %></td>
+          <td><%= team.title %></td>
+          <td><%= team.created_at.iso8601 %></td>
+          <td><%= team.updated_at.iso8601 %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<h3>Tokens</h3>
+<div id="auth_tokens">
+  <table class="table table-response table-striped table-bordered">
+    <thead>
+      <th>ID</th>
+      <th>Refresh token</th>
+      <th>Fingerprint</th>
+      <th>Expired at</th>
+    </thead>
+    <tbody>
+      <% @user.auth_tokens.each do |token| %>
+        <tr>
+          <td><%= token.id %></td>
+          <td><%= token.refresh_token %></td>
+          <td><%= token.fingerprint %></td>
+          <td><%= token.expired_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

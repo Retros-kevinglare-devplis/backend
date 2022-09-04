@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-8">
+    <h2>Collaborator: <%= @collaborator.user.email %></h2>
+  </div>
+  <div class="col-4 d-flex align-items-center justify-content-end">
+    <%= link_to "Edit", edit_admin_collaborator_path(@collaborator.id), class: 'btn btn-warning btn-sm m-2' %>
+    <%= link_to "Destroy", admin_collaborator_path(@collaborator.id), class: 'btn btn-danger btn-sm' %>
+  </div>
+</div>
+<hr>
+<h3>Info</h3>
+<div id="collaborator">
+  <table class="table table-response table-striped table-bordered">
+    <tbody>
+    <tr>
+      <th>ID</th>
+      <td><%= @collaborator.id %></td>
+    </tr>
+    <tr>
+      <th>User</th>
+      <td><%= link_to @collaborator.user.username, admin_user_path(@collaborator.user_id) %></td>
+    </tr>
+    <tr>
+      <th>Team</th>
+      <td><%= link_to @collaborator.team.title, admin_user_path(@collaborator.team_id) %></td>
+    </tr>
+    <tr>
+      <th>Status</th>
+      <td><%= @collaborator.status %></td>
+    </tr>
+    <% if @collaborator.invite.present? %>
+      <tr>
+        <th>Invite</th>
+        <td><%= @collaborator.invite %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <th>Created at</th>
+      <td><%= @collaborator.created_at.iso8601 %></td>
+    </tr>
+    <tr>
+      <th>Updated at</th>
+      <td><%= @collaborator.updated_at.iso8601 %></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<!--<h3>Collaborators</h3>-->
+<!--<div id="collaborators">-->
+<!--  <table class="table table-response table-striped table-bordered">-->
+<!--    <thead>-->
+<!--      <th>ID</th>-->
+<!--      <th>User</th>-->
+<!--      <th>Status</th>-->
+<!--      <th>Created at</th>-->
+<!--      <th>Updated at</th>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+      <%# @collaborator.collaborators.each do |collaborator| %>
+<!--        <tr>-->
+<!--          <td><%#= collaborator.id %></td>-->
+<!--          <td><%#= link_to(collaborator.user.username, admin_user_path(collaborator.user_id)) %></td>-->
+<!--          <td><%#= collaborator.status %></td>-->
+<!--          <td><%#= collaborator.created_at.iso8601 %></td>-->
+<!--          <td><%#= collaborator.updated_at.iso8601 %></td>-->
+<!--        </tr>-->
+      <%# end %>
+<!--    </tbody>-->
+<!--  </table>-->
+<!--</div>-->
+<!--<br>-->
+<!--<h3>Invites</h3>-->
+<!--<div id="invites">-->
+<!--  <table class="table table-response table-striped table-bordered">-->
+<!--    <thead>-->
+<!--      <th>ID</th>-->
+<!--      <th>Sender</th>-->
+<!--      <th>Recipient</th>-->
+<!--      <th>Email</th>-->
+<!--      <th>Status</th>-->
+<!--      <th>Expired at</th>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+      <%# @collaborator.invites.each do |invite| %>
+<!--        <tr>-->
+<!--          <td><%#= invite.id %></td>-->
+<!--          <td><%#= link_to(invite.sender.username, admin_user_path(invite.sender_id)) %></td>-->
+          <%# if invite.recipient_id.present? %>
+<!--            <td><%#= link_to(invite.recipient.username, admin_user_path(invite.recipient_id)) %></td>-->
+          <%# else %>
+<!--            <td>-</td>-->
+          <%# end %>
+<!--          <td><%#= invite.email %></td>-->
+<!--          <td><%#= invite.status %></td>-->
+<!--          <td><%#= invite.expired_at&.iso8601 %></td>-->
+<!--        </tr>-->
+      <%# end %>
+<!--    </tbody>-->
+<!--  </table>-->
+<!--</div>-->
