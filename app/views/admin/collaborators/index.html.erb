@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-8">
+    <h2>Collaborators</h2>
+  </div>
+  <div class="col-4 d-flex align-items-center justify-content-end">
+    <%= link_to "New", new_admin_collaborator_path, class: 'btn btn-success btn-sm' %>
+  </div>
+</div>
+<hr>
+<div id="collaborators">
+  <div class="row">
+    <div class="col-9">
+      <table class="table table-response table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Team</th>
+          <th>User</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @collaborators.each do |collaborator| %>
+          <tr>
+            <td><%= link_to collaborator.id, admin_collaborator_path(collaborator.id) %></td>
+            <td><%= link_to collaborator.team.title, admin_collaborator_path(collaborator.team_id) %></td>
+            <td><%= link_to collaborator.user.username, admin_user_path(collaborator.user_id) %></td>
+            <td><%= collaborator.status %></td>
+        <% end %>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3">
+    </div>
+  </div>
+</div>
+
+<%= render 'shared/pagination', options: @options %>

@@ -15,8 +15,8 @@ class User
   validates :email, :username, :first_name, :last_name, :encrypted_password, presence: true
 
   has_many :auth_tokens, dependent: :destroy
-  has_many :sender_invites, class_name: 'Invite', inverse_of: :evil_wizard, dependent: :destroy
-  has_many :recipient_invites, class_name: 'Invite', inverse_of: :evil_wizard, dependent: :destroy
+  has_many :sender_invites, class_name: 'Invite', inverse_of: :sender, dependent: :destroy
+  has_many :recipient_invites, class_name: 'Invite', inverse_of: :recipient, dependent: :destroy
   has_many :teams, dependent: :destroy
   has_many :collaborators, dependent: :destroy
 
@@ -29,6 +29,6 @@ class User
   private
 
   def send_sign_up_email
-    UserMailer.with(email: email).sign_up.deliver_later
+    UserMailer.with(email:).sign_up.deliver_later
   end
 end

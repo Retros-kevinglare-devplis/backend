@@ -14,7 +14,7 @@ class AuthService
     def get_user_ws(token:)
       return if token.blank?
 
-      find_user(token: token)
+      find_user(token:)
     end
 
     def get_user(token:)
@@ -25,8 +25,8 @@ class AuthService
       find_user(token: token.last)
     end
 
-    def find_user(token: )
-      jwt = decode(token: token)
+    def find_user(token:)
+      jwt = decode(token:)
       auth_token = AuthToken.find_by(id: jwt[:auth_token_id], expired_at: Time.current..)
       return if auth_token.nil?
       return if auth_token[:user_id] != auth_token.user_id

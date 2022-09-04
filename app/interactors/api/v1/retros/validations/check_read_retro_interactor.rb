@@ -6,12 +6,12 @@ class Api::V1::Retros::Validations::CheckReadRetroInteractor < ApplicationIntera
     params = context.params
     team_id = params[:team_id]
 
-    collaborator = user.collaborators.find_by(team_id: team_id)
+    collaborator = user.collaborators.find_by(team_id:)
 
     if collaborator.present?
       context.team = collaborator.team
     else
-      error = { retro: ["Not enough rights by team #{team_id}"] }
+      error = { team: ["not enough rights by team #{team_id}"] }
       context.message = "#{self.class.name} error: #{error}"
       context.error = error
       context.status = :unprocessable_entity

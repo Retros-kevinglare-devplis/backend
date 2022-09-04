@@ -1,0 +1,33 @@
+<%= form_with(model: @team, url: team.persisted? ? admin_team_path(team) : admin_teams_path) do |f| %>
+  <% if @team.errors.any? %>
+    <div style="color: red">
+      <b><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</b>
+      <ul>
+        <% @team.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <%= f.label :title, style: "display: block" %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= f.label :user, style: "display: block" %>
+        <%= f.select :user_id, User.pluck(:email, :id),  {}, class: 'form-select' %>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div>
+    <%= f.submit 'Submit', :class => 'btn btn-success' %>
+  </div>
+<% end %>

@@ -8,8 +8,8 @@ class Api::V1::Retros::Validations::FindRetrosInteractor < ApplicationInteractor
 
     pagination = PaginationService.call(
       cursor: team.retros,
-      current_page: current_page,
-      per_page: per_page,
+      current_page:,
+      per_page:,
       path: 'api_v1_teams_path'
     )
 

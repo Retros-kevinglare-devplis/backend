@@ -1,0 +1,9 @@
+<div class="row">
+  <nav class="nav">
+    <% if options[:links][:self] != options[:links][:first] %>
+      <a class="nav-link" href="<%= options[:links][:first] %>"><<</a>
+    <% elsif options[:links][:self] != options[:links][:last]  %>
+      <a class="nav-link" href="<%= options[:links][:last] %>">>></a>
+    <% end %>
+  </nav>
+</div>

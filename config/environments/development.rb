@@ -1,6 +1,8 @@
-require "active_support/core_ext/integer/time"
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
+  config.log_level = :debug
+
   # Specify AnyCable WebSocket server URL to use by JS client
   config.after_initialize do
     config.action_cable.url = ActionCable.server.config.url = ENV.fetch('CABLE_URL') if AnyCable::Rails.enabled?
@@ -23,10 +25,10 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
-  if Rails.root.join("tmp/caching-dev.txt").exist?
+  if Rails.root.join('tmp/caching-dev.txt').exist?
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      "Cache-Control" => "public, max-age=#{2.days.to_i}"
+      'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
   else
     config.action_controller.perform_caching = false
@@ -47,7 +49,6 @@ Rails.application.configure do
 
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
-
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

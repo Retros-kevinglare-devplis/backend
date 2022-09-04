@@ -6,7 +6,6 @@ class Api::V1::Users::Actions::GenerateJwtInteractor < ApplicationInteractor
     auth_token = context.auth_token
     access_token_expired_at = 1.day.from_now
 
-
     payload = {
       user_id: user.id.to_s,
       username: user.username,
@@ -16,7 +15,7 @@ class Api::V1::Users::Actions::GenerateJwtInteractor < ApplicationInteractor
       exp: access_token_expired_at.to_i
     }
 
-    access_token = AuthService.encode(payload: payload)
+    access_token = AuthService.encode(payload:)
 
     context.access_token = access_token
     context.access_token_expired_at = access_token_expired_at

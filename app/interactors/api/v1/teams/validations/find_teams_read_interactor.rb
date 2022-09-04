@@ -8,8 +8,8 @@ class Api::V1::Teams::Validations::FindTeamsReadInteractor < ApplicationInteract
 
     pagination = PaginationService.call(
       cursor: user.teams_collaborators,
-      current_page: current_page,
-      per_page: per_page,
+      current_page:,
+      per_page:,
       path: 'api_v1_teams_path'
     )
 
