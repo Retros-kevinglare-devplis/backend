@@ -29,12 +29,18 @@ class Admin::UsersController < AdminController
     else
       render :edit, status: :unprocessable_entity
     end
+  rescue => e
+    flash[:error] = e.message
+    render :edit, status: :unprocessable_entity
   end
 
   # DELETE /users/1
   def destroy
     @user.destroy
     redirect_to admin_users_path, notice: 'User admin was successfully destroyed.'
+  rescue => e
+    flash[:error] = e.message
+    redirect_to admin_user_path(@user)
   end
 
   private

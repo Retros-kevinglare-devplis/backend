@@ -26,11 +26,11 @@
     </tr>
     <tr>
       <th>Created at</th>
-      <td><%= @team.created_at&.iso8601 %></td>
+      <td><%= @team.created_at.iso8601 %></td>
     </tr>
     <tr>
       <th>Updated at</th>
-      <td><%= @team.updated_at&.iso8601 %></td>
+      <td><%= @team.updated_at.iso8601 %></td>
     </tr>
     </tbody>
   </table>
@@ -52,8 +52,8 @@
           <td><%= collaborator.id %></td>
           <td><%= link_to(collaborator.user.username, admin_user_path(collaborator.user_id)) %></td>
           <td><%= collaborator.status %></td>
-          <td><%= collaborator.created_at&.iso8601 %></td>
-          <td><%= collaborator.updated_at&.iso8601 %></td>
+          <td><%= collaborator.created_at.iso8601 %></td>
+          <td><%= collaborator.updated_at.iso8601 %></td>
         </tr>
       <% end %>
     </tbody>

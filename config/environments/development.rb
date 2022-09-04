@@ -1,6 +1,8 @@
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
+  config.log_level = :debug
+
   # Specify AnyCable WebSocket server URL to use by JS client
   config.after_initialize do
     config.action_cable.url = ActionCable.server.config.url = ENV.fetch('CABLE_URL') if AnyCable::Rails.enabled?

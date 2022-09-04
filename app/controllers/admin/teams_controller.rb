@@ -1,12 +1,12 @@
 class Admin::TeamsController < AdminController
   include Pagination
 
-  before_action :set_team, only: %i[edit update destroy]
+  before_action :set_team, only: %i[edit update destroy show]
 
   # GET /teams
   def index
     pagination = PaginationService.call(
-      cursor: Team.all,
+      cursor: Team.includes(:user),
       current_page:,
       per_page:,
       path: 'admin_teams_path'
@@ -33,12 +33,13 @@ class Admin::TeamsController < AdminController
     else
       render :new, status: :unprocessable_entity
     end
+  rescue => e
+    flash[:error] = e.message
+    render :new, status: :unprocessable_entity
   end
 
   # GET /teams/1
-  def show
-    @team = Team.includes(collaborators: %i[user], invites: %i[sender recipient]).find(params[:id])
-  end
+  def show; end
 
   # PATCH/PUT /teams/1
   def update
@@ -47,19 +48,25 @@ class Admin::TeamsController < AdminController
     else
       render :edit, status: :unprocessable_entity
     end
+  rescue => e
+    flash[:error] = e.message
+    render :edit, status: :unprocessable_entity
   end
 
   # DELETE /teams/1
   def destroy
     @team.destroy
     redirect_to admin_teams_path, notice: 'Team admin was successfully destroyed.'
+  rescue => e
+    flash[:error] = e.message
+    redirect_to admin_team_path(@team)
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_team
-    @team = Team.find(params[:id])
+    @team = Team.includes(collaborators: %i[user], invites: %i[sender recipient]).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

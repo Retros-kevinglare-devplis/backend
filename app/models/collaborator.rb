@@ -11,6 +11,7 @@ class Collaborator
 
   index({ user_id: 1 })
   index({ team_id: 1 })
+  index({ user_id: 1, team_id: 1 } , { unique: true })
 
   belongs_to :user
   belongs_to :team
