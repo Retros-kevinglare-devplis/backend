@@ -1,0 +1,58 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/users/sign_up":
+    post:
+      summary: sign_up user
+      parameters: []
+      responses:
+        '200':
+          description: user registered
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  content:
+                    type: string
+                required:
+                - id
+                - title
+        '422':
+          description: user registered
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                username:
+                  type: string
+                fingerprint:
+                  type: string
+              required:
+              - email
+              - password
+              - firstName
+              - lastName
+              - username
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: retrosprint.ru

@@ -6,13 +6,7 @@ development:
 test:
   clients:
     default:
-      database: retrosprint_test
-      hosts:
-        - <%= ENV['MONGO_ADDR'] %>
-      options:
-        read:
-          mode: :primary
-        max_pool_size: 1
+      uri: <%= ENV['MONGO_URI'] %>
 
 production:
   clients:
