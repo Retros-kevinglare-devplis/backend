@@ -1,5 +1,5 @@
 class Api::V1::TeamSerializer < ApplicationSerializer
-  attributes :title, :created_at, :updated_at
+  attributes :title, :description, :created_at, :updated_at
 
   belongs_to :user
   has_many :collaborators
