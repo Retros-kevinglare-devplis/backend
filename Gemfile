@@ -32,11 +32,12 @@ gem 'jwt'
 
 gem 'newrelic_rpm'
 
+gem 'rspec-rails'
+gem 'rswag'
+
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
-  gem 'rspec-rails'
-  gem 'rswag'
   gem 'faker'
 end
 
