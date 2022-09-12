@@ -13,7 +13,7 @@ class Api::V1::Teams::Validations::FindTeamsReadInteractor < ApplicationInteract
       path: 'api_v1_teams_path'
     )
 
-    context.team = pagination[:cursor]
+    context.teams = pagination[:cursor]
     context.options = pagination[:options]
   end
 end

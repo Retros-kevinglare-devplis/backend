@@ -11,7 +11,8 @@ class Api::V1::Invites::Actions::CreateInviteInteractor < ApplicationInteractor
         sender: user.id,
         recipient: User.find_by(email: params[:email]),
         email: params[:email],
-        expired_at: Time.current + 3.days
+        expired_at: Time.current + 3.days,
+        token: SecureRandom.hex
       }
     )
 

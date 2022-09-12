@@ -12,6 +12,7 @@ class Invite
   field :email, type: String
   field :expired_at, type: Time
   field :status, type: Integer
+  field :token, type: String
 
   index({ sender_id: 1 })
   index({ recipient_id: 1 })

@@ -5,7 +5,7 @@ module Api
         include Interactor::Organizer
 
         organize Validations::FindTeamsReadInteractor,
-                 Actions::ResponseTeamInteractor
+                 Actions::ResponseTeamsInteractor
       end
     end
   end

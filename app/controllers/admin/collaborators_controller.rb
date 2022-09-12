@@ -9,7 +9,8 @@ class Admin::CollaboratorsController < AdminController
       cursor: Collaborator.includes(:team, :user),
       current_page:,
       per_page:,
-      path: 'admin_collaborators_path'
+      path: 'admin_collaborators_path',
+      path_ids: [team.id]
     )
 
     @collaborators = pagination[:cursor]
