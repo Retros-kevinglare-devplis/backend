@@ -23,14 +23,14 @@ class Api::V1::UsersController < ApiController
   private
 
   def sign_up_params
-    params.permit(:email, :first_name, :last_name, :username, :password, :fingerprint)
+    params.require(:data).require(:attributes).permit(:email, :first_name, :last_name, :username, :password, :fingerprint)
   end
 
   def sign_in_params
-    params.permit(:email, :password, :fingerprint)
+    params.require(:data).require(:attributes).permit(:email, :password, :fingerprint)
   end
 
   def refresh_params
-    params.permit(:refresh_token, :fingerprint)
+    params.require(:data).require(:attributes).permit(:refresh_token, :fingerprint)
   end
 end

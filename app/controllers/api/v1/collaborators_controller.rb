@@ -30,6 +30,6 @@ class Api::V1::CollaboratorsController < ApiController
   end
 
   def collaborator_params
-    params.permit(:team_id, :status)
+    params.require(:data).require(:attributes).permit(:team_id, :status)
   end
 end

@@ -34,6 +34,6 @@ class Api::V1::InvitesController < ApiController
   end
 
   def invite_params
-    params.permit(:team_id, :email, :status)
+    params.require(:data).require(:attributes).permit(:team_id, :email, :status)
   end
 end
