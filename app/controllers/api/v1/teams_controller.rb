@@ -12,12 +12,12 @@ class Api::V1::TeamsController < ApiController
   end
 
   def create
-    result = Api::V1::Teams::CreateInteractor.call(params: team_params, user:)
+    result = Api::V1::Teams::CreateInteractor.call(params: team_params.to_h, user:)
     render_json result
   end
 
   def update
-    result = Api::V1::Teams::UpdateInteractor.call(params: team_params, user:, team_id: params[:id])
+    result = Api::V1::Teams::UpdateInteractor.call(params: team_params.to_h, user:, team_id: params[:id])
     render_json result
   end
 
