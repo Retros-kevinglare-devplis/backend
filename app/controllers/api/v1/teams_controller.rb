@@ -29,6 +29,6 @@ class Api::V1::TeamsController < ApiController
   private
 
   def team_params
-    params.require(:data).require(:attributes).permit(:title, :description)
+    params.require(:data).require(:attributes).permit(:title, :description, :image_url)
   end
 end

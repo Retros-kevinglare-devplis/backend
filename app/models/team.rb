@@ -6,6 +6,7 @@ class Team
   field :user_id, type: BSON::ObjectId
   field :title, type: String
   field :description, type: String
+  field :image_url, type: String
 
   index({ user_id: 1 })
 

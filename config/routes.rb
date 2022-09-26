@@ -25,11 +25,13 @@ Rails.application.routes.draw do
         get '/whoami', to: 'users#whoami'
       end
 
-      resources :teams, only: %i[index create update destroy show] do
-        resources :retros, only: %i[index create update destroy show]
-        resources :invites, only: %i[index create update destroy show]
-        resources :collaborators, only: %i[index update destroy show]
+      resources :teams, only: %i[index show create update destroy] do
+        resources :retros, only: %i[index show create update destroy]
+        resources :invites, only: %i[index show create update destroy]
+        resources :collaborators, only: %i[index show update destroy]
       end
+
+      resource :storages, only: %i[create update destroy show]
     end
   end
 end

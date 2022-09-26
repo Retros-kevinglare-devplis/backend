@@ -24,6 +24,10 @@ gem 'jquery-rails'
 gem 'mongoid', '>= 6.0', '< 8.a'
 gem 'mongoid_paranoia'
 
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'fog'
+gem 'rmagick'
+
 gem 'enumerize'
 
 gem 'bcrypt'
